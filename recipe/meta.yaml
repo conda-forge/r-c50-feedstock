@@ -1,4 +1,4 @@
-{% set version = '0.1.1' %}
+{% set version = "0.1.2" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/C50_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/C50/C50_{{ version }}.tar.gz
-  sha256: 03bc1fc2f64bcd5c680568a24902deafab1965074a66f8802bc4cd0335bd01df
+  sha256: 8f459856e0309274bee24462b7145db4eba1d71031c236db39000a5375bdfaba
 
 build:
   number: 0
