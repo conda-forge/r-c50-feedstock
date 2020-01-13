@@ -1,4 +1,4 @@
-{% set version = '0.1.2' %}
+{% set version = '0.1.3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,43 +7,40 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: C50_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/C50_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/C50/C50_{{ version }}.tar.gz
-  sha256: 8f459856e0309274bee24462b7145db4eba1d71031c236db39000a5375bdfaba
+  sha256: 4c691d181719378c271825a46727c3fb59fb0147444e3885231985bb699c8b05
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
     - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
     - {{posix}}automake-wrapper  # [win]
     - {{posix}}pkg-config
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
-
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-cubist >=0.2.1
+    - r-cubist >=0.2.3
     - r-partykit
-
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
-    - r-cubist >=0.2.1
+    - r-cubist >=0.2.3
     - r-partykit
 
 test:
@@ -57,13 +54,32 @@ about:
   summary: C5.0 decision trees and rule-based models for pattern recognition that extend the
     work of Quinlan (1993, ISBN:1-55860-238-0).
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
+
+# Package: C50
+# Type: Package
+# Title: C5.0 Decision Trees and Rule-Based Models
+# Version: 0.1.3
+# Authors@R: c( person("Max", "Kuhn", , "mxkuhn@gmail.com", c("aut", "cre")), person("Steve", "Weston", role = "ctb"), person("Mark", "Culp", role = "ctb"), person("Nathan", "Coulter", role = "ctb"), person("Ross", "Quinlan", role = "aut", comment = "Author of imported C code"), person("RuleQuest Research", role = "cph", comment = "Copyright holder of imported C code"), person("Rulequest Research Pty Ltd.", role = "cph", comment = "Copyright holder of imported C code"))
+# Maintainer: Max Kuhn <mxkuhn@gmail.com>
+# Description: C5.0 decision trees and rule-based models for pattern recognition that extend the work of Quinlan (1993, ISBN:1-55860-238-0).
+# Imports: partykit, Cubist (>= 0.2.3)
+# Depends: R (>= 2.10.0)
+# Suggests: knitr, modeldata
+# URL: https://topepo.github.io/C5.0
+# BugReports: https://github.com/topepo/C5.0/issues
+# License: GPL-3
+# LazyLoad: yes
+# RoxygenNote: 7.0.2.9000
+# VignetteBuilder: knitr
+# Encoding: UTF-8
+# NeedsCompilation: yes
+# Packaged: 2020-01-10 17:47:27 UTC; max
+# Author: Max Kuhn [aut, cre], Steve Weston [ctb], Mark Culp [ctb], Nathan Coulter [ctb], Ross Quinlan [aut] (Author of imported C code), RuleQuest Research [cph] (Copyright holder of imported C code), Rulequest Research Pty Ltd. [cph] (Copyright holder of imported C code)
+# Repository: CRAN
+# Date/Publication: 2020-01-13 10:00:02 UTC
