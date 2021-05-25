@@ -3,7 +3,7 @@ About r-c50
 
 Home: https://topepo.github.io/C5.0
 
-Package license: GPL-3
+Package license: GPL-3.0-only
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-c50-feedstock/blob/master/LICENSE.txt)
 
