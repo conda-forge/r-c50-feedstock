@@ -1,4 +1,4 @@
-{% set version = "0.1.7" %}
+{% set version = "0.1.8" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/C50_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/C50/C50_{{ version }}.tar.gz
-  sha256: bea19059e9342a894e46b830a6f75c4cad5b55bb02b6eed4c127a6c3ad5de6e0
+  sha256: bbd1bd5ed0ed5257529396697bea2a5841c8159470ba09d2066411d4aeda9c15
 
 build:
   merge_build_host: true  # [win]
