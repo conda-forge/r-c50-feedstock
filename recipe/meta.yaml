@@ -1,4 +1,4 @@
-{% set version = "0.1.8" %}
+{% set version = "0.2.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/C50_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/C50/C50_{{ version }}.tar.gz
-  sha256: bbd1bd5ed0ed5257529396697bea2a5841c8159470ba09d2066411d4aeda9c15
+  sha256: 4670b7d465499166163d2b2519ca6f900e8d2b6abe02a3a8ab0be0ec6d3415e6
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
